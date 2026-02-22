@@ -39,7 +39,8 @@ aws-movie-recommender/
 │   └── lambda_function.py     # AWS Lambda Python script
 ├── data/
 │   └── cleaned_movies.csv     # Sample dataset for vector search
-└── README.md                  # Project documentation
+└── README.md                  # Project documentation```
+
 
 Author
 Uday Salathia Computer Engineering Student | Aspiring Specialist Programmer
