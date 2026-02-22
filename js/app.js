@@ -36,7 +36,7 @@ async function getRecommendation() {
         
         let rawText = data.recommendation || "No recommendation found.";
         
-        // Converts Markdown bold to HTML bold
+        // Converts the Markdown bold to HTML bold
         let formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         // Converts line breaks to HTML breaks
         formattedText = formattedText.replace(/\n/g, '<br>');
