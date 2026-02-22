@@ -24,7 +24,7 @@ async function getRecommendation() {
 
     try {
         //AWS API Gateway endpoint
-        const response = await fetch('https://qdprjox13k.execute-api.us-east-1.amazonaws.com/prod/recommend', {
+        const response = await fetch('/api/recommend', {
             method: 'POST',
             body: JSON.stringify({ "search_query": query }),
             headers: { 'Content-Type': 'application/json' }
