@@ -43,7 +43,7 @@ aws-movie-recommender/
 ```
 
 
-Author
+## 👥 Author
 Uday Salathia Computer Engineering Student | Aspiring Specialist Programmer
 
 If you found this project helpful, feel free to leave a ⭐!
