@@ -1,4 +1,13 @@
 let loadingInterval; 
+const inputField = document.getElementById("userInput")
+const submitBtn = document.getElementById("submitBtn")
+
+inputField.addEventListener("keydown", (e)=>{
+    if(e.key == "Enter"){
+        e.preventDefault(); //avoids refresh
+        submitBtn.click();
+    }
+})
 
 async function getRecommendation() {
     const outputDiv = document.getElementById('output');
