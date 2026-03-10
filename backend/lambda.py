@@ -5,8 +5,8 @@ def lambda_handler(event, context):
     # 1. Initialize Bedrock Client
     client = boto3.client(service_name='bedrock-agent-runtime', region_name='us-east-1')
     
-    # 2. Hardcoded IDs (Double check these!)
-    K_BASE_ID = 'ZKTLUKDCA6' 
+    # 2. ID's
+    K_BASE_ID = 'VQW9C6E4EQ' 
     MODEL_ARN = 'arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0'
 
     try:

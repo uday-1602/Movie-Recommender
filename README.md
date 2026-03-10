@@ -1,30 +1,30 @@
-# 🎬 Serverless AI Movie Recommender (RAG System)
+# 🎬 Serverless AI Movie Recommender (Cost-Optimized RAG System)
+
+**Live Demo:** [Click here to try the AI](https://movie-recommender-woad.vercel.app/)
 
 A full-stack, serverless web application that provides highly personalized, conversational movie recommendations using **Retrieval-Augmented Generation (RAG)**. 
 
-Unlike standard LLMs that rely purely on pre-trained data, this system connects a custom dataset of movie plots, casts, and genres directly to **Anthropic's Claude 3.5 Sonnet** via **Amazon Bedrock**, ensuring accurate, hallucination-free recommendations based strictly on the provided context.
+### 🏗️ Architecture & Cost Optimization
+This project was specifically architected to bypass the high idle costs of traditional managed vector databases (like Amazon OpenSearch). By decoupling the storage layer and migrating the vector index to **Pinecone Serverless**, the system maintains enterprise-grade retrieval speeds while operating entirely on free-tier and pay-per-request infrastructure. 
+
+Additionally, the frontend utilizes a **Vercel Serverless Function proxy** to securely route requests, ensuring no AWS API Gateway endpoints or keys are ever exposed to the client browser.
 
 
-
-## 🚀 Features
-* **Retrieval-Augmented Generation (RAG):** Uses a custom Knowledge Base (AWS S3 + Bedrock) to ground the AI's responses in factual data.
-* **Serverless Architecture:** Fully managed backend utilizing AWS Lambda and API Gateway for zero-maintenance scalability.
-* **Prompt Engineering:** Custom generation configurations enforce strict response formatting (e.g., exactly 3 recommendations, 5-line descriptive paragraphs, specific tone) while preventing robotic phrasing.
-* **Clean UI/UX:** A responsive, dark-themed (Netflix-inspired) frontend with asynchronous loading states and markdown parsing.
-* **Separation of Concerns:** Clean codebase structured with distinct HTML, CSS, JS, and Python backend logic.
 
 ## 🛠️ Tech Stack
-**Frontend:**
-* HTML5, CSS3, Vanilla JavaScript (ES6+)
-* Asynchronous Fetch API for backend communication
-* Regex for dynamic Markdown-to-HTML parsing
 
-**Backend & Cloud Infrastructure (AWS):**
-* **Amazon S3:** Data lake for the raw and cleaned `.csv` movie datasets.
-* **Amazon Bedrock (Knowledge Bases):** Handles text embedding and vector database management for semantic search.
-* **Claude 3.5 Sonnet (Anthropic):** The core LLM generating conversational responses.
-* **AWS Lambda:** Serverless compute running Python (boto3) to orchestrate the RAG pipeline.
-* **Amazon API Gateway:** REST API with Lambda Proxy Integration and strict CORS management.
+**Frontend & Edge Proxy:**
+* **Vanilla UI:** HTML5, CSS3, JavaScript (ES6+) with dynamic Markdown-to-HTML parsing.
+* **Vercel:** Hosting the frontend and providing Serverless API Routes (Node.js) to securely proxy requests to AWS.
+
+**Backend & Cloud Infrastructure (AWS & Pinecone):**
+* **Amazon Bedrock (Knowledge Bases):** Orchestrates the RAG pipeline and text embeddings (Titan Text Embeddings).
+* **Anthropic Claude 3.5 Sonnet:** The core LLM generating the conversational responses.
+* **Pinecone (Serverless):** Third-party vector database storing the dimensional movie embeddings.
+* **AWS Secrets Manager:** Securely stores and injects the Pinecone API key into Bedrock.
+* **AWS Lambda:** Serverless compute running Python (boto3) to execute the Bedrock RetrieveAndGenerate API.
+* **Amazon API Gateway:** REST API with strict rate-limiting (Usage Plans) to prevent throttling and abuse.
+* **Amazon S3:** Data lake for the raw `.csv` movie datasets.
 
 ## 📂 Project Structure
 ```text
